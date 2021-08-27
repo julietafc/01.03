@@ -28,15 +28,3 @@ function start() {
   }
   document.getElementById("calculate").addEventListener("click", showResult);
 }
-
-function showResult() {
-  console.log("showResult");
-  //   result = Math.floor * round;
-  document.getElementById("clear").addEventListener("click", clearResults);
-}
-
-function clearResults() {
-  console.log("clearResults");
-  document.getElementById("results").reset();
-  start();
-}
