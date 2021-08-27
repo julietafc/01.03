@@ -28,3 +28,10 @@ function start() {
   }
   document.getElementById("calculate").addEventListener("click", showResult);
 }
+
+function showResult() {
+  console.log("showResult");
+  document.getElementById("clear").addEventListener("click", clearResults);
+  // round up number if needed
+  // append result in list
+}
