@@ -35,3 +35,9 @@ function showResult() {
   // round up number if needed
   // append result in list
 }
+
+function clearResults() {
+  console.log("clearResults");
+  document.getElementById("results").reset();
+  start();
+}
