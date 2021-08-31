@@ -2,11 +2,12 @@
 
 window.addEventListener("load", start);
 
-let firstNumber;
-let secondNumber;
 let result;
 
-const round = ["1", "2", "3", "4", "5", "6", "7", "8"];
+const operatorSign = document.querySelector("#operator");
+const firstNumber = document.querySelector("#firstnumber");
+const secondNumber = document.querySelector("#secondnumber");
+const checkBox = document.querySelector("#doround");
 
 function start() {
   console.log("start");
@@ -16,12 +17,6 @@ function start() {
 
 function showResult() {
   console.log("showResult");
-
-  let operator = document.getElementById("operator").value;
-
-  firstNumber = document.getElementById("firstnumber").value;
-  //read second number
-  secondNumber = document.getElementById("secondnumber").value;
 
   if (operator == "add") {
     console.log("This is a sum");
@@ -41,13 +36,34 @@ function showResult() {
     roundResult();
   }
 
-  console.log(result); // round up number if needed
-
-  // append result in list
+  console.log(result);
 }
 
 function clearResults() {
   console.log("clearResults");
-  document.getElementById("results").reset();
-  start();
+  document.querySelectorAll("#results li").forEach((li) => {
+    li.remove();
+  });
+}
+
+function roundResult() {
+  if (checkBox.checked) {
+    let numberDecimals = document.querySelector("#decimals").value;
+    result = result.toFixed(numberDecimals);
+  }
+  logResult();
+}
+//-------------------------------------
+function logResult() {
+  firstNumber.value = result;
+  let x = document.createElement("LI");
+  let t = document.createTextNode(result);
+  x.appendChild(t);
+  document.querySelector("#results").appendChild(x);
+  scrollList();
+}
+//--------------------------------------
+function scrollList() {
+  let lastLi = document.querySelector("#results li:last-child");
+  lastLi.scrollIntoView(true);
 }
